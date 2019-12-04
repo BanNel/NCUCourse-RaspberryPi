@@ -3,14 +3,6 @@ import imutils
 import time
 import operator
 
-# Import 人臉訓練集 Model(找尋人臉定位)
-face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
-
-# 宣告基本參數
-cascade_scale = 1.2
-cascade_neighbors = 6
-minFaceSize = (30,30)
-    
 # 找找臉在哪裡 (人臉定位): 給予一張照片，回傳人臉座標
 def getFaces(img):
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -35,9 +27,13 @@ def emotionDetection():
     pbtxt_path = "emotions-recognition-retail-0003.bin"
     net = cv2.dnn.readNet(model_path, pbtxt_path)
 
-    
+    # Import 人臉訓練集 Model(找尋人臉定位)
+    face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 
-    
+    # 宣告基本參數
+    cascade_scale = 1.2
+    cascade_neighbors = 6
+    minFaceSize = (30,30)
 
     # Specify target device
     net.setPreferableTarget(cv2.dnn.DNN_TARGET_MYRIAD)
@@ -115,4 +111,3 @@ def emotionDetection():
         print("FPS:", fps)
 
         cv2.waitKey(1)
-emotionDetection()
