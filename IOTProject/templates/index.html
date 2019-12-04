@@ -14,10 +14,17 @@
   
   <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-icon-180x180.png">
   <link href="./assets/favicon.ico" rel="icon">
-
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <title>Title page</title>  
 
 <link href="./main.d8e0d294.css" rel="stylesheet"></head>
+
+
+<script type=text/javascript> 
+  setInterval(function(){
+   $('#emotion_label').load('/emotion_label');
+	}, 2000) /* time in milliseconds (ie 2 seconds)*/
+</script>
 
 <body class="">
 
@@ -104,6 +111,7 @@
           <div class="row">
             <div class="col-md-4">
               <p><img src="{{ url_for('video_feed') }}" class="img-responsive" alt=""></p>
+		<h1><span id=emotion_label>?</span></h1>
             </div>
             <div class="col-md-8">
 

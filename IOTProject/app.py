@@ -1,6 +1,6 @@
 # import required modules
 
-from flask import Flask, render_template, Response 
+from flask import Flask,jsonify,  render_template, Response 
 # import picamera 
 # import cv2
 # import socket 
@@ -43,7 +43,7 @@ cascade_neighbors = 6
 minFaceSize = (30,30)
 vs = VideoStream(src=0).start()
 time.sleep(2.0)
-
+emotion_label = "None"
 
 app = Flask(__name__) 
 
@@ -110,7 +110,10 @@ def detect_motion(frameCount):
                     
                     # 印出最高機率的表情 (我寫的)
                     stats = {'neutral':neutral, 'happy':happy, 'sad': sad, 'surprise': surprise, 'anger': anger}    
-                    print (max(stats.items(), key=operator.itemgetter(1))[0])
+                    emot = max(stats.items(), key=operator.itemgetter(1))[0]
+                    print (emot)
+                    global emotion_label
+                    emotion_label = emot
 
 #                    # 印出來(所有機率、其他文字)
 #                    line2 = "{}%\n{}%\n{}%\n{}%\n{}%".format(neutral,happy,sad,surprise,anger)
@@ -203,7 +206,11 @@ def video_feed():
     return Response(generate(),
         mimetype = "multipart/x-mixed-replace; boundary=frame")
 
-
+@app.route('/emotion_label')
+def test():
+    global emotion_label
+    
+    return jsonify(emotion_label)
 
 #####處理path路徑
 @app.route('/<path:path>')
