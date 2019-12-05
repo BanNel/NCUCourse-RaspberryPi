@@ -1,0 +1,56 @@
+<html> 
+ <head> 
+   <title>Video Streaming </title> 
+   <style>
+   html,body{
+    margin:0;
+    height:100%;
+}
+img{
+  display:block;
+  width:100%; height:100%;
+  object-fit: cover;
+}
+
+   </style>
+   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+    last_mode = "video"
+setInterval(function(){
+   $('#mode').load('/project_mode_label');
+   
+   get_mode = document.getElementById('mode').innerHTML;
+   if (get_mode != last_mode){
+       last_mode = get_mode
+       var img = document.getElementById("scenario");
+       if (last_mode == "Image"){
+           console.log("True")
+           img.src = "http://192.168.0.6:5000/assets/images/elsa2.jpg";
+       } else if (last_mode == "Mirror"){
+           img.src ="/video_feed";
+           $('#emotion_label').load('/emotion_label');
+       
+       
+       } else{
+           console.log("False")    
+       }
+       console.log(last_mode)
+   }
+   
+    }, 1000) /* time in milliseconds (ie 2 seconds)*/
+</script>
+ </head> 
+ <body>
+ 
+ 
+ <center><h1><span class="align-middle" id=mode>?</span>
+ <span class="align-middle" id=emotion_label></span></h1>
+ </center>
+ 
+ 
+ 
+
+<img id="scenario" src="https://pic.pimg.tw/emilee2216/1574500478-2922968064_wn.jpg" class="img-responsive" alt="">
+
+ </body> 
+</html> 

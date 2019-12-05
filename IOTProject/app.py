@@ -221,7 +221,16 @@ def test2():
     project_mode = mode
     return jsonify(project_mode)
 
+@app.route('/project_mode_label')
+def test3():
+    global project_mode
+    
+    return project_mode
 
+@app.route('/screen')
+def screen():
+    
+    return render_template("screen.html")
 
 #####處理path路徑
 @app.route('/<path:path>')
