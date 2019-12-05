@@ -20,7 +20,37 @@
 <link href="./main.d8e0d294.css" rel="stylesheet"></head>
 
 
-<script type=text/javascript> 
+<script type=text/javascript>
+$(function() {
+    $('a#Video').bind('click', function() {
+      $.getJSON( '/project_mode', {
+        a: "Video"
+      }, function(data) {
+	  $("#result").text(data);
+      });
+      return false;
+    });
+  });
+  $(function() {
+    $('a#Mirror').bind('click', function() {
+      $.getJSON( '/project_mode', {
+        a: "Mirror"
+      }, function(data) {
+	  $("#result").text(data);
+      });
+      return false;
+    });
+  });
+  $(function() {
+    $('a#Image').bind('click', function() {
+      $.getJSON( '/project_mode', {
+        a: "Image"
+      }, function(data) {
+	  $("#result").text(data);
+      });
+      return false;
+    });
+  }); 
   setInterval(function(){
    $('#emotion_label').load('/emotion_label');
 	}, 2000) /* time in milliseconds (ie 2 seconds)*/
@@ -91,10 +121,16 @@
 
       <div class="card">
         <div class="card-block">
-          <h2>Screen</h2>
+          <h2>Control Project Mode</h2>
           <div class="row">
             <div class="col-md-4">
-              
+		
+		<h1><span id=result>?</span></h1>
+              <div class="btn-group btn-group-justified">
+		  <a href="#" class="btn btn-primary" id=Video>Video</a>
+		  <a href="#" class="btn btn-primary" id=Image>Image</a>
+		  <a href="#" class="btn btn-primary" id=Mirror>Mirror</a>
+		</div>
             </div>
             <div class="col-md-8">
 

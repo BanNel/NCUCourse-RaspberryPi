@@ -1,6 +1,6 @@
 # import required modules
 
-from flask import Flask,jsonify,  render_template, Response 
+from flask import Flask,jsonify,  render_template, Response, request
 # import picamera 
 # import cv2
 # import socket 
@@ -44,6 +44,7 @@ minFaceSize = (30,30)
 vs = VideoStream(src=0).start()
 time.sleep(2.0)
 emotion_label = "None"
+project_mode = "Image"
 
 app = Flask(__name__) 
 
@@ -211,6 +212,16 @@ def test():
     global emotion_label
     
     return jsonify(emotion_label)
+
+
+@app.route('/project_mode')
+def test2():
+    global project_mode
+    mode = request.args.get('a', 0, type=None)
+    project_mode = mode
+    return jsonify(project_mode)
+
+
 
 #####處理path路徑
 @app.route('/<path:path>')
