@@ -17,27 +17,55 @@ img{
 <script>
     last_mode = "video"
 setInterval(function(){
-   $('#mode').load('/project_mode_label');
-   
+    $('#mode').load('/project_mode_label');
+    $('#emotion_label').load('/emotion_label');   
    get_mode = document.getElementById('mode').innerHTML;
+   get_emotion = document.getElementById('emotion_label').innerHTML;
+   
+   
+   
+   
+   
    if (get_mode != last_mode){
        last_mode = get_mode
        var img = document.getElementById("scenario");
        if (last_mode == "Image"){
            console.log("True")
-           img.src = "http://192.168.0.6:5000/assets/images/elsa2.jpg";
+           img.src = "http://192.168.0.6:5000/assets/images/default.jpg";
        } else if (last_mode == "Mirror"){
            img.src ="/video_feed";
-           $('#emotion_label').load('/emotion_label');
-       
        
        } else{
            console.log("False")    
        }
        console.log(last_mode)
    }
-   
-    }, 1000) /* time in milliseconds (ie 2 seconds)*/
+   var img = document.getElementById("scenario");
+    if (get_mode == "Image"){
+    
+    
+   if (get_emotion == "neutral"){
+       img.src = "http://192.168.0.6:5000/assets/images/neutral.jpg";
+       }
+   else if (get_emotion == "happy"){
+       img.src = "http://192.168.0.6:5000/assets/images/happy.jpg";
+       }
+   else if (get_emotion == "sad"){
+       img.src = "http://192.168.0.6:5000/assets/images/sad.jpg";
+       }
+   else if (get_emotion == "surprise"){
+       img.src = "http://192.168.0.6:5000/assets/images/surprise.jpg";
+       }
+   else if (get_emotion == "anger"){
+       img.src = "http://192.168.0.6:5000/assets/images/anger.jpg";
+       }
+   else {
+       img.src = "http://192.168.0.6:5000/assets/images/default.jpg";
+       } }else if(get_mode == "Mirror"){
+           img.src ="/video_feed";
+           }
+    
+    }, 500) /* time in milliseconds (ie 2 seconds)*/
 </script>
  </head> 
  <body>
@@ -50,7 +78,7 @@ setInterval(function(){
  
  
 
-<img id="scenario" src="https://pic.pimg.tw/emilee2216/1574500478-2922968064_wn.jpg" class="img-responsive" alt="">
+<img id="scenario" src="http://192.168.0.6:5000/assets/images/default.jpg" class="img-responsive" alt="">
 
  </body> 
 </html> 

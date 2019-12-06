@@ -111,31 +111,32 @@ def detect_motion(frameCount):
                     
                     # 印出最高機率的表情 (我寫的)
                     stats = {'neutral':neutral, 'happy':happy, 'sad': sad, 'surprise': surprise, 'anger': anger}    
-                    emot = max(stats.items(), key=operator.itemgetter(1))[0]
-                    print (emot)
-                    global emotion_label
-                    emotion_label = emot
+                    emot = max(stats.items(), key=operator.itemgetter(1))
+                    if emot[1] >= 0.5:
+                        print (emot[0])
+                        global emotion_label
+                        emotion_label = emot[0]
 
-#                    # 印出來(所有機率、其他文字)
-#                    line2 = "{}%\n{}%\n{}%\n{}%\n{}%".format(neutral,happy,sad,surprise,anger)
-#                    y0, dy = yy, 35
-#                    for ii, txt in enumerate(line2.split('\n')):
-#                        y = y0 + ii*dy
-#                        cv2.putText(frame_c, txt, (x, y ), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255, 0, 0), 2)
-#
-#                    line1 = "Neutral\nHappy\nSad\nSurprise\nAnger"
-#                    y0, dy = yy, 35
-#                    for ii, txt in enumerate(line1.split('\n')):
-#                        y = y0 + ii*dy
-#                        cv2.putText(frame_c, txt, (x+55, y ), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
-#                    i += 1
+                    # 印出來(所有機率、其他文字)
+                    line2 = "{}%\n{}%\n{}%\n{}%\n{}%".format(neutral,happy,sad,surprise,anger)
+                    y0, dy = yy, 35
+                    for ii, txt in enumerate(line2.split('\n')):
+                        y = y0 + ii*dy
+                        cv2.putText(frame_c, txt, (x, y ), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255, 0, 0), 2)
+
+                    line1 = "Neutral\nHappy\nSad\nSurprise\nAnger"
+                    y0, dy = yy, 35
+                    for ii, txt in enumerate(line1.split('\n')):
+                        y = y0 + ii*dy
+                        cv2.putText(frame_c, txt, (x+55, y ), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
+                    i += 1
         
         
         
         
         # grab the current timestamp and draw it on the frame
         timestamp = datetime.datetime.now()
-        cv2.putText(frame, timestamp.strftime(
+        cv2.putText(frame_c, timestamp.strftime(
             "%A %d %B %Y %I:%M:%S%p"), (10, frame.shape[0] - 10),
             cv2.FONT_HERSHEY_SIMPLEX, 0.35, (0, 0, 255), 1)
 
@@ -157,7 +158,7 @@ def detect_motion(frameCount):
         # acquire the lock, set the output frame, and release the
         # lock
         with lock:
-            outputFrame = frame.copy()
+            outputFrame = frame_c.copy()
         
 def generate():
     # grab global references to the output frame and lock variables
@@ -211,7 +212,7 @@ def video_feed():
 def test():
     global emotion_label
     
-    return jsonify(emotion_label)
+    return emotion_label
 
 
 @app.route('/project_mode')
