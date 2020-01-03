@@ -31,10 +31,13 @@ setInterval(function(){
        var img = document.getElementById("scenario");
        if (last_mode == "Image"){
            console.log("True")
-           img.src = "http://192.168.0.6:5000/assets/images/default.jpg";
-       } else if (last_mode == "Mirror"){
+           img.src = "/assets/images/default.jpg";
+       } else if (last_mode == "Camera"){
            img.src ="/video_feed";
        
+	} else if(last_mode=="RealMirror"){
+		img.src ="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Black_photo.jpg/675px-Black_photo.jpg";
+	
        } else{
            console.log("False")    
        }
@@ -45,23 +48,23 @@ setInterval(function(){
     
     
    if (get_emotion == "neutral"){
-       img.src = "http://192.168.0.6:5000/assets/images/neutral.jpg";
+       img.src = "/assets/images/neutral.jpg";
        }
    else if (get_emotion == "happy"){
-       img.src = "http://192.168.0.6:5000/assets/images/happy.jpg";
+       img.src = "/assets/images/happy.jpg";
        }
    else if (get_emotion == "sad"){
-       img.src = "http://192.168.0.6:5000/assets/images/sad.jpg";
+       img.src = "/assets/images/sad.jpg";
        }
    else if (get_emotion == "surprise"){
-       img.src = "http://192.168.0.6:5000/assets/images/surprise.jpg";
+       img.src = "/assets/images/surprise.jpg";
        }
    else if (get_emotion == "anger"){
-       img.src = "http://192.168.0.6:5000/assets/images/anger.jpg";
+       img.src = "/assets/images/anger.jpg";
        }
    else {
-       img.src = "http://192.168.0.6:5000/assets/images/default.jpg";
-       } }else if(get_mode == "Mirror"){
+       img.src = "/assets/images/default.jpg";
+       } }else if(get_mode == "Camera"){
            img.src ="/video_feed";
            }
     
@@ -70,15 +73,16 @@ setInterval(function(){
  </head> 
  <body>
  
- 
+ <!--
  <center><h1><span class="align-middle" id=mode>?</span>
  <span class="align-middle" id=emotion_label></span></h1>
- </center>
+ </center>  -->
  
- 
+ <span class="align-middle" id=mode style="display:none">?</span>
+ <span class="align-middle" id=emotion_label style="display:none"></span>
  
 
-<img id="scenario" src="http://192.168.0.6:5000/assets/images/default.jpg" class="img-responsive" alt="">
+<img id="scenario" src="/assets/images/default.jpg" class="img-responsive" alt="">
 
  </body> 
 </html> 
