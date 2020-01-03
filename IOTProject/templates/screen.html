@@ -7,13 +7,41 @@
     height:100%;
 }
 img{
+position: fixed;
   display:block;
   width:100%; height:100%;
   object-fit: cover;
 }
+.ml3 {
+position: fixed;
+  font-weight: 900;
+  font-size: 3.5em;
+display:block;
+  width:100%; height:100%;
+  object-fit: cover;
+top: -20px;
+z-index:9999;
+color: #F0FFFF;
+
+}
 
    </style>
    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+	var dataArray = [];
+        function read_json() {
+            $.getJSON("./assets/inspirational-quote.json", function(data) {
+                $.each(data["data"], function(idx,data) {
+			dataArray.push(data);
+//                    console.log(data);
+                });
+                  console.log(dataArray[0]);
+            });
+
+        }
+    </script>
+
 <script>
     last_mode = "video"
 setInterval(function(){
@@ -44,34 +72,70 @@ setInterval(function(){
        console.log(last_mode)
    }
    var img = document.getElementById("scenario");
+   var courageword = document.getElementById("courageword");
     if (get_mode == "Image"){
-    
-    
-   if (get_emotion == "neutral"){
-       img.src = "/assets/images/neutral.jpg";
-       }
-   else if (get_emotion == "happy"){
-       img.src = "/assets/images/happy.jpg";
-       }
-   else if (get_emotion == "sad"){
-       img.src = "/assets/images/sad.jpg";
-       }
-   else if (get_emotion == "surprise"){
-       img.src = "/assets/images/surprise.jpg";
-       }
-   else if (get_emotion == "anger"){
-       img.src = "/assets/images/anger.jpg";
-       }
-   else {
-       img.src = "/assets/images/default.jpg";
-       } }else if(get_mode == "Camera"){
+    courageword.style.visibility = 'hidden';
+    	img.style.visibility = 'visible';
+	   if (get_emotion == "neutral"){
+	       img.src = "/assets/images/neutral.jpg";
+	       }
+	   else if (get_emotion == "happy"){
+	       img.src = "/assets/images/happy.jpg";
+	       }
+	   else if (get_emotion == "sad"){
+	       img.src = "/assets/images/sad.jpg";
+	       }
+	   else if (get_emotion == "surprise"){
+	       img.src = "/assets/images/surprise.jpg";
+	       }
+	   else if (get_emotion == "anger"){
+	       img.src = "/assets/images/anger.jpg";
+	       }
+	   else {
+	       img.src = "/assets/images/default.jpg";
+       } 
+    }else if (get_mode == "EncourageQuote"){
+
+	if (get_mode != last_mode){
+
+	courageword.style.visibility = 'visible';
+	courageword.innerHTML = dataArray[Math.floor((Math.random() * 100) + 1)].inspirational_quote;
+	console.log(courageword.innerHTML)
+	//img.style.visibility = 'hidden';
+	
+
+	   if (get_emotion == "neutral"){
+	       img.src = "/assets/images/neutral.jpg";
+	       }
+	   else if (get_emotion == "happy"){
+	       img.src = "/assets/images/neutral.jpg";
+	       }
+	   else if (get_emotion == "sad"){
+	       img.src = "/assets/images/neutral.jpg";
+	       }
+	   else if (get_emotion == "surprise"){
+	       img.src = "/assets/images/neutral.jpg";;
+	       }
+	   else if (get_emotion == "anger"){
+	       img.src = "/assets/images/neutral.jpg";
+	       }
+	   else {
+	       img.src = "/assets/images/neutral.jpg";
+		}
+	}
+    }else if (get_mode == "Game"){
+	       img.src = "/assets/images/neutral.jpg";
+
+    }else if(get_mode == "Camera"){
+	img.style.visibility = 'visible';
+courageword.style.visibility = 'hidden';
            img.src ="/video_feed";
            }
     
-    }, 500) /* time in milliseconds (ie 2 seconds)*/
+    }, 1000) /* time in milliseconds (ie 2 seconds)*/
 </script>
  </head> 
- <body>
+<body onload="read_json();">
  
  <!--
  <center><h1><span class="align-middle" id=mode>?</span>
@@ -80,7 +144,9 @@ setInterval(function(){
  
  <span class="align-middle" id=mode style="display:none">?</span>
  <span class="align-middle" id=emotion_label style="display:none"></span>
- 
+<h1 class="ml3" id="courageword">Give me some emotion</h1>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 
 <img id="scenario" src="/assets/images/default.jpg" class="img-responsive" alt="">
 

@@ -41,6 +41,27 @@ $(function() {
       return false;
     });
   });
+$(function() {
+    $('a#EncourageQuote').bind('click', function() {
+      $.getJSON( '/project_mode', {
+        a: "EncourageQuote"
+      }, function(data) {
+      $("#result").text(data);
+      });
+      return false;
+    });
+  });
+ $(function() {
+    $('a#Game').bind('click', function() {
+      $.getJSON( '/project_mode', {
+        a: "Game"
+      }, function(data) {
+      $("#result").text(data);
+      });
+      return false;
+    });
+  });
+ 
   $(function() {
     $('a#Image').bind('click', function() {
       $.getJSON( '/project_mode', {
@@ -105,7 +126,8 @@ $(function() {
         <h1><span id=result>?</span></h1>
               <div class="btn-group btn-group-justified">
           <a href="#" class="btn btn-primary" id=RealMirror>RealMirror</a>          
-          <a href="#" class="btn btn-primary" id=Image>Image</a>
+<!--          <a href="#" class="btn btn-primary" id=Image>Elsa Image</a> -->
+          <a href="#" class="btn btn-primary" id=EncourageQuote>EncourageQuote</a>
           <a href="#" class="btn btn-primary" id=Camera>Camera</a>
         </div>
             </div>

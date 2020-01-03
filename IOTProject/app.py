@@ -234,6 +234,10 @@ def screen():
     
     return render_template("screen.html")
 
+@app.route('/testjson')
+def testjson():
+    
+    return render_template("index2.html")
 #####處理path路徑
 @app.route('/<path:path>')
 def static_file(path):

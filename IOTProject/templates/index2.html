@@ -1,0 +1,23 @@
+
+<html>
+<head>
+    <title>Test - Reading data in JSON format</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+	var dataArray = [];
+        function read_json() {
+            $.getJSON("./assets/inspirational-quote.json", function(data) {
+                $.each(data["data"], function(idx,data) {
+			dataArray.push(data);
+//                    console.log(data);
+                });
+                  console.log(dataArray[0]);
+            });
+
+        }
+    </script>
+</head>
+<body onload="read_json();">
+
+</body>
+</html>
