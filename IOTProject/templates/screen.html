@@ -44,6 +44,7 @@ color: #F0FFFF;
 
 <script>
     last_mode = "video"
+    last_emotion = "neutral"
 setInterval(function(){
     $('#mode').load('/project_mode_label');
     $('#emotion_label').load('/emotion_label');   
@@ -95,9 +96,9 @@ setInterval(function(){
 	       img.src = "/assets/images/default.jpg";
        } 
     }else if (get_mode == "EncourageQuote"){
-
-	if (get_mode != last_mode){
-
+	
+	if (get_emotion != last_emotion){
+	last_emotion = get_emotion
 	courageword.style.visibility = 'visible';
 	courageword.innerHTML = dataArray[Math.floor((Math.random() * 100) + 1)].inspirational_quote;
 	console.log(courageword.innerHTML)
@@ -132,7 +133,7 @@ courageword.style.visibility = 'hidden';
            img.src ="/video_feed";
            }
     
-    }, 1000) /* time in milliseconds (ie 2 seconds)*/
+    }, 5000) /* time in milliseconds (ie 2 seconds)*/
 </script>
  </head> 
 <body onload="read_json();">
