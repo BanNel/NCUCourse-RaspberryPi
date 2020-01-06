@@ -1,11 +1,14 @@
 # Magic Mirror (Emotion Detection) on Raspberry Pi
+![](https://i.imgur.com/q4JTW3H.png)
 :::info
 This is a Course Project, which based on IOT Technique.
 **Course**: Internet of Things Practical (IM5032)
-**Author**: Pokémon Masters
+**Author**: Pokémon Trainer
+
 :::
 
 :::danger
+**Code**: https://github.com/BanNel/NCUCourse-RaspberryPi/tree/master/IOTProject
 ⚠️ The code in this project is based on several author. For the detail, please check the references.
 :::
 
@@ -13,28 +16,12 @@ This is a Course Project, which based on IOT Technique.
 ## :elephant:  Overview
 It is a Magic Mirror (Emotion Detection), which can detect **user’s emotion** and **give some feedback (Quote)**.
 
-| Screen | User's Control Panel |
-| -------- | -------- | 
-| ![](https://i.imgur.com/0vsOqRt.png)     | ![](https://i.imgur.com/76eY6jc.png)     | 
+![](https://i.imgur.com/Db9RbbF.jpg) 
 
+|  Usage Example| Usage Example | Usage Example | 
+| -------- | -------- | -------- | 
+|   ![](https://i.imgur.com/ytplxi3.gif) |![](https://i.imgur.com/ytplxi3.gif) |![](https://i.imgur.com/ytplxi3.gif) |
 
-## :ideograph_advantage: Usage
-This Project has two part: Screen Side and Control Side.
-
-The magic mirror have three kinds of mode, **Real Mirror mode**, **Camera mode** and another is the **Encourage Quote mode**.
-
-### Screen Side
-| Running Mode | Description |
-| -------- | -------- |
-| **Real Mirror mode**     | Display the black background on screen, to pretend as the mirror.     |
-| **Camera mode**     |  Show the real time camera on the screen | 
-| **Encourage Quote mode**     | It can detect user’s emotion and give some encourage quote.     |
-
-### Control Side (control by Website)
-| Feature | Description |
-| -------- | -------- |
-| **Control Running mode**     | Change the Mode On Screen     |
-| **Monitor Camera**     |  Show the real time camera via website | 
 
 ### Hardware
 * Raspberry Pi Model 3B
