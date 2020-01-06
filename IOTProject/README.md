@@ -23,6 +23,30 @@ It is a Magic Mirror (Emotion Detection), which can detect **user’s emotion** 
 |   ![](https://i.imgur.com/ytplxi3.gif) |![](https://i.imgur.com/ytplxi3.gif) |![](https://i.imgur.com/ytplxi3.gif) |
 
 
+## :ideograph_advantage: Usage
+This Project has two part: Screen Side and Control Side.
+
+The magic mirror have three kinds of mode, **Real Mirror mode**, **Camera mode** and another is the **Encourage Quote mode**.
+
+### Screen Side
+
+
+
+
+| **Real Mirror mode**  | **Camera mode**  |  **Encourage Quote mode** |
+| -------- | -------- | -------- |
+| ![](https://i.imgur.com/uWM3Mkx.png)   | ![](https://i.imgur.com/eHKIyvy.png)    | ![](https://i.imgur.com/u8TcBmo.png)|
+| Display the black background on screen, to pretend as the mirror.  |Show the real time camera on the screen | It can detect user’s emotion and give some encourage quote.|
+
+### Control Side (control by Website)
+
+| **Control Running mode**     | **Monitor Camera**        |
+| -------- | -------- |
+| ![](https://i.imgur.com/ULX0Q0P.png)|  ![](https://i.imgur.com/lZ0YXGj.png) | 
+|   Change the Mode On Screen |  Show the real time camera via website | 
+
+
+
 ### Hardware
 * Raspberry Pi Model 3B
 * Wi-Fi
