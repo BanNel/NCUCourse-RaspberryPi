@@ -1,4 +1,5 @@
 # Magic Mirror (Emotion Detection) on Raspberry Pi
+FULL Instruction: https://hackmd.io/oVM72SVPRoqVmf_wHZwZ0g
 ![](https://i.imgur.com/q4JTW3H.png)
 :::info
 This is a Course Project, which based on IOT Technique.
